@@ -7,7 +7,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://petreadorinsilviu.github.io/Braila-Reforma/">
 <meta property="og:title" content="Brăila 2028 – Simulator de reorganizare administrativă">
-<meta property="og:description" content="44 de primării, 5 UAT-uri. Cât își pot acoperi comunele din Brăila din venituri proprii, pe datele oficiale ale Ministerului Finanțelor.">
+<meta property="og:description" content="44 de primării, 5 UAT-uri continue teritorial. Cât se economisește la personal și funcționare și cât își pot acoperi comunele din Brăila din venituri proprii, pe datele oficiale ale Ministerului Finanțelor.">
 <meta property="og:image" content="https://petreadorinsilviu.github.io/Braila-Reforma/preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -103,6 +103,11 @@ table.ind td{padding:5px 8px}
 .bar{position:relative;height:10px;border-radius:5px;background:color-mix(in srgb,var(--ink) 8%,transparent)}
 .bar span{display:block;height:100%;border-radius:5px}
 .bar i{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);opacity:.55}
+.bar em{position:absolute;left:0;top:0;height:100%;border:1.5px solid var(--ink);border-radius:5px;opacity:.45;box-sizing:border-box}
+details.ip{border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+details.ip summary{cursor:pointer;font-weight:600;font-size:13px}
+.ipgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0}
+.ipgrid input{width:100%}
 .findings{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
 .kpi span{line-height:1.35}table.ind td:first-child{color:var(--muted)}
 .detail{border:1px solid var(--line);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px}
@@ -181,15 +186,15 @@ const UAT = [
 const FIN_2025 = {"Însurăței":{"cif":"4721220","v":10387886.71,"pit":3416002.08,"pa":3300045.0,"pt":6832727.0,"f":16047077.62,"dev":13117857.83,"tv":29668387.05,"tc":29164935.45,"tvd":5227654.0,"eq":4444198.01},"Ianca":{"cif":"4874631","v":20410151.09,"pit":7237733.6,"pa":4437261.0,"pt":13279405.0,"f":29602282.89,"dev":8322454.58,"tv":37329187.0,"tc":37924737.47,"tvd":7631034.0,"eq":4668799.12},"Romanu":{"cif":"4342693","v":1986808.38,"pit":322708.05,"pa":1758619.99,"pt":2459362.99,"f":5776996.95,"dev":2046500.36,"tv":7845162.6,"tc":7823497.31,"tvd":1817956.2,"eq":1788840.72},"Siliștea":{"cif":"4721298","v":3278032.0,"pit":921904.2,"pa":1426033.0,"pt":2158504.0,"f":5424415.77,"dev":7997028.03,"tv":14993118.58,"tc":13421443.8,"tvd":1534400.0,"eq":1543517.58},"Vișani":{"cif":"4874704","v":1392228.89,"pit":314218.17,"pa":1219192.0,"pt":2627372.0,"f":5655012.86,"dev":2819985.64,"tv":7914063.57,"tc":8474998.5,"tvd":2227576.34,"eq":2355724.81},"Cireșu":{"cif":"4342804","v":2485684.1,"pit":912395.61,"pa":1087749.0,"pt":3583019.0,"f":7892690.13,"dev":6065019.81,"tv":13569804.06,"tc":13957709.94,"tvd":4168072.28,"eq":1823005.53},"Ulmu":{"cif":"4874712","v":2446691.28,"pit":681868.53,"pa":960105.0,"pt":4025774.0,"f":7741068.33,"dev":6301087.98,"tv":13994132.55,"tc":14042156.31,"tvd":3521897.0,"eq":2522247.4},"Bordei Verde":{"cif":"4874798","v":2315844.76,"pit":511963.49,"pa":1249419.0,"pt":3677997.0,"f":7323002.14,"dev":10422278.85,"tv":16749638.69,"tc":17745280.99,"tvd":2897092.02,"eq":2277463.17},"Brăila":{"cif":"4205670","v":409238658.98,"pit":178649782.62,"pa":33737529.01,"pt":190733449.15,"f":637844274.72,"dev":205501183.31,"tv":848324746.01,"tc":843345458.03,"tvd":133727250.72,"eq":15490987.46},"Galbenu":{"cif":"4874682","v":1795760.42,"pit":459302.13,"pa":1480246.0,"pt":4988193.81,"f":9291604.07,"dev":1755609.01,"tv":11066641.85,"tc":11047213.08,"tvd":3712331.99,"eq":2915565.92},"Gemenele":{"cif":"4721301","v":2569202.15,"pit":350419.23,"pa":1113838.0,"pt":1855985.0,"f":5752621.73,"dev":1661610.38,"tv":7966482.43,"tc":7414232.11,"tvd":1973027.0,"eq":2106683.82},"Dudești":{"cif":"4342766","v":3306072.34,"pit":959636.79,"pa":1659129.75,"pt":4133397.75,"f":7832663.07,"dev":4468415.2,"tv":10306548.14,"tc":12301078.27,"tvd":2770013.0,"eq":2267084.7},"Surdila-Găiseanca":{"cif":"4874674","v":1565603.49,"pit":307494.18,"pa":1218280.0,"pt":1476414.0,"f":6047206.04,"dev":6130672.75,"tv":12528631.0,"tc":12177878.79,"tvd":2708444.83,"eq":2199560.26},"Măxineni":{"cif":"4721263","v":3747773.48,"pit":1286814.06,"pa":1741273.0,"pt":3288289.0,"f":9310397.74,"dev":17014764.19,"tv":26843495.32,"tc":26325161.93,"tvd":3812376.0,"eq":2444313.99},"Berteștii de Jos":{"cif":"4874780","v":1727438.45,"pit":296016.21,"pa":1745817.0,"pt":1945176.0,"f":5992845.61,"dev":4883204.7,"tv":11361897.98,"tc":10876050.31,"tvd":1906497.32,"eq":2635488.29},"Victoria":{"cif":"4342812","v":2178892.1,"pit":602513.73,"pa":1939728.0,"pt":3631973.0,"f":7645837.18,"dev":21003311.63,"tv":28884504.24,"tc":28649148.81,"tvd":3170546.46,"eq":3194963.03},"Mircea Vodă":{"cif":"4874739","v":3037572.61,"pit":1051628.76,"pa":1332972.0,"pt":3351178.0,"f":7417031.45,"dev":1684719.38,"tv":8837865.9,"tc":9101750.83,"tvd":2544613.0,"eq":2131427.42},"Surdila-Greci":{"cif":"4874666","v":2082966.65,"pit":771814.89,"pa":1224813.0,"pt":2096376.0,"f":4412475.39,"dev":692077.84,"tv":5583359.83,"tc":5104553.23,"tvd":1293955.96,"eq":1410213.96},"Cazasu":{"cif":"15955677","v":4593420.4,"pit":1498351.68,"pa":1962857.0,"pt":3577179.0,"f":8401040.82,"dev":10816719.24,"tv":19737228.87,"tc":19217760.06,"tvd":2557303.0,"eq":2628893.61},"Tudor Vladimirescu":{"cif":"4342731","v":3125971.9,"pit":487963.98,"pa":1118194.0,"pt":2195893.0,"f":5676782.19,"dev":6845747.0,"tv":13329500.74,"tc":12522529.19,"tvd":1497927.04,"eq":1980707.42},"Scorțaru Nou":{"cif":"4721280","v":1500768.04,"pit":243552.33,"pa":781720.0,"pt":1170208.0,"f":3547734.5,"dev":4843457.12,"tv":8372068.63,"tc":8391191.62,"tvd":1053241.89,"eq":1636635.73},"Traian":{"cif":"4342715","v":3711314.97,"pit":1377192.6,"pa":1658129.0,"pt":3307114.51,"f":8800855.65,"dev":2261748.01,"tv":11098246.06,"tc":11062603.66,"tvd":2796100.02,"eq":2215341.58},"Șuțești":{"cif":"4342740","v":3161267.76,"pit":879994.71,"pa":2674804.0,"pt":3214385.0,"f":11234700.02,"dev":11671758.62,"tv":20683018.19,"tc":22906458.64,"tvd":3716130.51,"eq":3464824.34},"Bărăganul":{"cif":"4342820","v":2560063.22,"pit":630522.9,"pa":1497740.0,"pt":3265193.0,"f":6762280.25,"dev":7899452.65,"tv":14939535.37,"tc":14661732.9,"tvd":2505058.0,"eq":2670112.35},"Gropeni":{"cif":"4874755","v":4934494.33,"pit":1071396.27,"pa":1236393.0,"pt":4001473.0,"f":10815191.27,"dev":8554276.38,"tv":15382829.52,"tc":19369467.65,"tvd":4220660.01,"eq":2143907.61},"Grădiștea":{"cif":"4342758","v":1900900.34,"pit":367674.93,"pa":927550.0,"pt":2198133.0,"f":6329208.45,"dev":10284628.63,"tv":16427771.31,"tc":16613837.08,"tvd":2276124.52,"eq":1858457.17},"Chiscani":{"cif":"4342669","v":19251379.27,"pit":7350493.5,"pa":4593101.0,"pt":7861118.0,"f":21228711.89,"dev":8844987.32,"tv":35971383.05,"tc":30073699.21,"tvd":4555000.0,"eq":940170.0},"Jirlău":{"cif":"4874690","v":2373576.59,"pit":509046.3,"pa":1576914.0,"pt":3974044.0,"f":8834548.52,"dev":4376583.07,"tv":13214025.76,"tc":13211131.59,"tvd":3532498.81,"eq":2876988.44},"Racovița":{"cif":"4342839","v":1423504.39,"pit":253578.15,"pa":1474612.0,"pt":2475000.0,"f":4369461.99,"dev":2953457.71,"tv":7460289.57,"tc":7322919.7,"tvd":1169332.0,"eq":1563930.34},"Făurei":{"cif":"4343052","v":11404230.99,"pit":3257469.83,"pa":2484420.0,"pt":14968638.0,"f":22105187.7,"dev":4925602.99,"tv":26099142.29,"tc":27030790.69,"tvd":2313709.8,"eq":631430.0},"Roșiori":{"cif":"4342774","v":1702564.57,"pit":451693.62,"pa":1062701.0,"pt":1786544.5,"f":6006768.31,"dev":9660544.64,"tv":16093020.5,"tc":15667312.95,"tvd":2700975.05,"eq":2080332.2},"Stăncuța":{"cif":"4874771","v":3058538.24,"pit":594124.02,"pa":1536742.0,"pt":2293469.0,"f":8833513.14,"dev":954324.96,"tv":9590926.29,"tc":9787838.1,"tvd":2685248.0,"eq":2734664.18},"Tichilești":{"cif":"4342677","v":3871029.96,"pit":2062356.66,"pa":2130831.42,"pt":3028426.42,"f":8104510.01,"dev":1418176.39,"tv":10118308.95,"tc":9522686.4,"tvd":3649995.08,"eq":1687493.51},"Zăvoaia":{"cif":"4342790","v":2167213.45,"pit":615059.55,"pa":1336214.0,"pt":2007911.0,"f":6269200.13,"dev":4596438.43,"tv":9298889.61,"tc":10865638.56,"tvd":2345144.0,"eq":2430844.15},"Viziru":{"cif":"4874747","v":4143180.63,"pit":1457578.71,"pa":2531434.0,"pt":4625167.0,"f":14015836.75,"dev":3457282.74,"tv":16239647.97,"tc":17473119.49,"tvd":5252864.14,"eq":4440650.62},"Ciocile":{"cif":"4342782","v":1647827.77,"pit":409863.51,"pa":962937.0,"pt":3031755.0,"f":6952195.5,"dev":8500119.33,"tv":13855541.52,"tc":15452314.83,"tvd":3465164.3,"eq":1804036.2},"Mărașu":{"cif":"4342685","v":3152826.13,"pit":1250202.87,"pa":1177404.0,"pt":2719698.0,"f":5735866.24,"dev":3474176.5,"tv":13523939.61,"tc":9210042.74,"tvd":2275655.41,"eq":1875262.95},"Movila Miresii":{"cif":"4342723","v":2735508.66,"pit":870201.36,"pa":2130791.0,"pt":3769687.0,"f":9923251.87,"dev":2188350.92,"tv":11824856.51,"tc":12111602.79,"tvd":3543725.87,"eq":3271834.02},"Râmnicelu":{"cif":"4721255","v":1729080.31,"pit":461420.19,"pa":1230038.05,"pt":2265462.05,"f":5501883.94,"dev":5206070.6,"tv":9677403.06,"tc":10707954.54,"tvd":2109742.95,"eq":1985423.86},"Unirea":{"cif":"4342707","v":1884602.83,"pit":466127.55,"pa":1464329.56,"pt":3018720.56,"f":6130261.53,"dev":14845411.09,"tv":20373300.15,"tc":20975672.62,"tvd":2381134.0,"eq":2307791.5},"Frecăței":{"cif":"4874658","v":5957306.78,"pit":1605541.77,"pa":1367968.0,"pt":2466882.5,"f":4962130.38,"dev":11584827.84,"tv":8597363.56,"tc":16546958.22,"tvd":968000.0,"eq":1142292.81},"Tufești":{"cif":"4874763","v":3950226.75,"pit":1530009.18,"pa":1935888.0,"pt":2954484.0,"f":11522071.95,"dev":8602655.98,"tv":18917325.15,"tc":20124727.93,"tvd":5805929.45,"eq":3303427.12},"Vădeni":{"cif":"4342650","v":9163832.77,"pit":2572961.58,"pa":2718439.0,"pt":3825533.0,"f":9057712.21,"dev":1562267.44,"tv":14947577.69,"tc":10619979.65,"tvd":2686948.0,"eq":1791167.14},"Salcia Tudor":{"cif":"4721271","v":3402667.0,"pit":578767.14,"pa":1365460.0,"pt":3308612.0,"f":8286396.14,"dev":8128562.16,"tv":16347611.06,"tc":16414958.3,"tvd":3143627.69,"eq":2033240.74}};
 /* Coduri SIRUTA ale celor 44 de UAT (pentru potrivirea sigură cu fișiere oficiale) */
 const SIRUTA = {"Brăila":"42682","Făurei":"42753","Ianca":"43331","Însurăței":"43411","Bărăganul":"42824","Berteștii de Jos":"42842","Bordei Verde":"42913","Cazasu":"44560","Chiscani":"42708","Ciocile":"42968","Cireșu":"43019","Dudești":"43073","Frecăței":"43117","Galbenu":"43180","Gemenele":"43242","Grădiștea":"43279","Gropeni":"43313","Jirlău":"43466","Mărașu":"43493","Măxineni":"43563","Mircea Vodă":"43625","Movila Miresii":"43652","Racovița":"43698","Râmnicelu":"43732","Romanu":"43787","Roșiori":"43812","Salcia Tudor":"43867","Scorțaru Nou":"43929","Siliștea":"43992","Stăncuța":"44060","Surdila-Găiseanca":"44113","Surdila-Greci":"42771","Șuțești":"44140","Tichilești":"44177","Traian":"44202","Tudor Vladimirescu":"44257","Tufești":"44300","Ulmu":"44328","Unirea":"44355","Vădeni":"44391","Victoria":"44435","Vișani":"44462","Viziru":"44505","Zăvoaia":"44532"};
-/* Propunerea cu 5 UAT (zone în jurul orașelor + o zonă în nord-vest). Editabilă în aplicație. */
-const PRESET_5 = {
-  "Brăila":["Brăila","Vădeni","Siliștea","Cazasu","Chiscani","Mărașu","Frecăței","Tichilești"],
-  "Însurăței":["Însurăței","Gropeni","Tufești","Viziru","Bărăganul","Berteștii de Jos","Victoria","Zăvoaia","Stăncuța"],
-  "Ianca":["Ianca","Traian","Unirea","Bordei Verde","Mircea Vodă"],
-  "Făurei":["Făurei","Dudești","Roșiori","Ciocile","Ulmu","Surdila-Greci","Vișani","Jirlău","Galbenu","Surdila-Găiseanca","Cireșu"],
-  "Movila Miresii":["Movila Miresii","Tudor Vladimirescu","Măxineni","Gemenele","Scorțaru Nou","Grădiștea","Salcia Tudor","Racovița","Șuțești","Râmnicelu","Romanu"]
-};
-
+/* Propunerea optimizată: Brăila separat + 4 UAT rurale (model de optimizare, vezi fila Propunere automată). */
+const PRESET_OPT = [{"name": "Brăila", "seat": "Brăila", "members": ["Brăila"]}, {"name": "Ianca", "seat": "Ianca", "members": ["Chiscani", "Bordei Verde", "Surdila-Greci", "Mircea Vodă", "Galbenu", "Vișani", "Ulmu", "Surdila-Găiseanca", "Traian", "Jirlău", "Grădiștea", "Făurei", "Ianca"]}, {"name": "Movila Miresii", "seat": "Movila Miresii", "members": ["Măxineni", "Vădeni", "Salcia Tudor", "Scorțaru Nou", "Cazasu", "Râmnicelu", "Șuțești", "Movila Miresii", "Racovița", "Romanu", "Gemenele", "Tudor Vladimirescu", "Siliștea"]}, {"name": "Tufești", "seat": "Tufești", "members": ["Tichilești", "Tufești", "Berteștii de Jos", "Mărașu", "Stăncuța", "Viziru", "Gropeni", "Unirea", "Frecăței"]}, {"name": "Însurăței", "seat": "Însurăței", "members": ["Însurăței", "Bărăganul", "Cireșu", "Ciocile", "Roșiori", "Zăvoaia", "Victoria", "Dudești"]}];
+/* Propunerea anterioară cu 5 UAT, păstrată pentru comparație. */
+const PRESET_VECHI = [{"name": "Brăila", "seat": "Brăila", "members": ["Brăila", "Vădeni", "Siliștea", "Cazasu", "Chiscani", "Mărașu", "Frecăței", "Tichilești"]}, {"name": "Însurăței", "seat": "Însurăței", "members": ["Însurăței", "Gropeni", "Tufești", "Viziru", "Bărăganul", "Berteștii de Jos", "Victoria", "Zăvoaia", "Stăncuța"]}, {"name": "Ianca", "seat": "Ianca", "members": ["Ianca", "Traian", "Unirea", "Bordei Verde", "Mircea Vodă"]}, {"name": "Făurei", "seat": "Făurei", "members": ["Făurei", "Dudești", "Roșiori", "Ciocile", "Ulmu", "Surdila-Greci", "Vișani", "Jirlău", "Galbenu", "Surdila-Găiseanca", "Cireșu"]}, {"name": "Movila Miresii", "seat": "Movila Miresii", "members": ["Movila Miresii", "Tudor Vladimirescu", "Măxineni", "Gemenele", "Scorțaru Nou", "Grădiștea", "Salcia Tudor", "Racovița", "Șuțești", "Râmnicelu", "Romanu"]}];
+/* Centrele UAT (punct interior al conturului, lon/lat) și vecinătățile (graniță comună ≥ 200 m), calculate din braila_uat.geojson. */
+const CENTRE = {"Brăila": [27.96602, 45.27526], "Făurei": [27.24055, 45.10455], "Ianca": [27.50594, 45.12269], "Însurăței": [27.61925, 44.95278], "Bărăganul": [27.52211, 44.81533], "Berteștii de Jos": [27.72147, 44.8278], "Bordei Verde": [27.55255, 45.03043], "Cazasu": [27.88497, 45.27274], "Chiscani": [27.91024, 45.21202], "Ciocile": [27.26226, 44.81277], "Cireșu": [27.37635, 44.95851], "Dudești": [27.44286, 44.87202], "Frecăței": [28.08109, 45.01891], "Galbenu": [27.1416, 45.19673], "Gemenele": [27.63627, 45.27802], "Grădiștea": [27.37743, 45.26778], "Gropeni": [27.93769, 45.04476], "Jirlău": [27.19179, 45.16289], "Mărașu": [27.97162, 44.8535], "Măxineni": [27.64437, 45.41921], "Mircea Vodă": [27.40304, 45.11038], "Movila Miresii": [27.61045, 45.22003], "Racovița": [27.44712, 45.30711], "Râmnicelu": [27.51896, 45.29102], "Romanu": [27.72302, 45.3055], "Roșiori": [27.36652, 44.81616], "Salcia Tudor": [27.48649, 45.41021], "Scorțaru Nou": [27.6165, 45.35121], "Siliștea": [27.80437, 45.33187], "Stăncuța": [27.81432, 44.9083], "Surdila-Găiseanca": [27.34315, 45.05385], "Surdila-Greci": [27.25046, 45.05151], "Șuțești": [27.46448, 45.22558], "Tichilești": [27.89259, 45.13806], "Traian": [27.65235, 45.13477], "Tudor Vladimirescu": [27.76451, 45.23324], "Tufești": [27.78284, 44.99855], "Ulmu": [27.30234, 44.92973], "Unirea": [27.77599, 45.09022], "Vădeni": [27.9294, 45.34748], "Victoria": [27.64692, 44.8088], "Vișani": [27.31829, 45.17932], "Viziru": [27.70231, 45.02262], "Zăvoaia": [27.46678, 44.95842]};
+const ADJ_NAMES = {"Brăila": ["Cazasu", "Chiscani", "Frecăței", "Mărașu", "Vădeni"], "Făurei": ["Jirlău", "Mircea Vodă", "Surdila-Greci", "Surdila-Găiseanca", "Vișani"], "Ianca": ["Bordei Verde", "Cireșu", "Mircea Vodă", "Movila Miresii", "Traian", "Zăvoaia", "Șuțești"], "Însurăței": ["Berteștii de Jos", "Bordei Verde", "Bărăganul", "Dudești", "Stăncuța", "Tufești", "Victoria", "Viziru", "Zăvoaia"], "Bărăganul": ["Dudești", "Roșiori", "Victoria", "Însurăței"], "Berteștii de Jos": ["Mărașu", "Stăncuța", "Victoria", "Însurăței"], "Bordei Verde": ["Ianca", "Traian", "Viziru", "Zăvoaia", "Însurăței"], "Cazasu": ["Brăila", "Chiscani", "Siliștea", "Tudor Vladimirescu", "Vădeni"], "Chiscani": ["Brăila", "Cazasu", "Mărașu", "Tichilești", "Traian", "Tudor Vladimirescu"], "Ciocile": ["Roșiori", "Ulmu"], "Cireșu": ["Dudești", "Ianca", "Mircea Vodă", "Roșiori", "Surdila-Greci", "Surdila-Găiseanca", "Ulmu", "Zăvoaia"], "Dudești": ["Bărăganul", "Cireșu", "Roșiori", "Zăvoaia", "Însurăței"], "Frecăței": ["Brăila", "Gropeni", "Mărașu"], "Galbenu": ["Jirlău", "Vișani"], "Gemenele": ["Movila Miresii", "Romanu", "Râmnicelu", "Scorțaru Nou", "Tudor Vladimirescu"], "Grădiștea": ["Racovița", "Vișani", "Șuțești"], "Gropeni": ["Frecăței", "Mărașu", "Stăncuța", "Tichilești", "Traian", "Tufești", "Unirea"], "Jirlău": ["Făurei", "Galbenu", "Surdila-Greci", "Vișani"], "Mărașu": ["Berteștii de Jos", "Brăila", "Chiscani", "Frecăței", "Gropeni", "Stăncuța", "Tichilești"], "Măxineni": ["Romanu", "Salcia Tudor", "Scorțaru Nou", "Siliștea"], "Mircea Vodă": ["Cireșu", "Făurei", "Ianca", "Surdila-Găiseanca", "Vișani", "Șuțești"], "Movila Miresii": ["Gemenele", "Ianca", "Râmnicelu", "Traian", "Tudor Vladimirescu", "Șuțești"], "Racovița": ["Grădiștea", "Râmnicelu", "Salcia Tudor", "Șuțești"], "Râmnicelu": ["Gemenele", "Movila Miresii", "Racovița", "Salcia Tudor", "Scorțaru Nou", "Șuțești"], "Romanu": ["Gemenele", "Măxineni", "Scorțaru Nou", "Siliștea", "Tudor Vladimirescu"], "Roșiori": ["Bărăganul", "Ciocile", "Cireșu", "Dudești", "Ulmu"], "Salcia Tudor": ["Măxineni", "Racovița", "Râmnicelu", "Scorțaru Nou"], "Scorțaru Nou": ["Gemenele", "Măxineni", "Romanu", "Râmnicelu", "Salcia Tudor"], "Siliștea": ["Cazasu", "Măxineni", "Romanu", "Tudor Vladimirescu", "Vădeni"], "Stăncuța": ["Berteștii de Jos", "Gropeni", "Mărașu", "Tufești", "Însurăței"], "Surdila-Găiseanca": ["Cireșu", "Făurei", "Mircea Vodă", "Surdila-Greci"], "Surdila-Greci": ["Cireșu", "Făurei", "Jirlău", "Surdila-Găiseanca", "Ulmu"], "Șuțești": ["Grădiștea", "Ianca", "Mircea Vodă", "Movila Miresii", "Racovița", "Râmnicelu"], "Tichilești": ["Chiscani", "Gropeni", "Mărașu", "Traian"], "Traian": ["Bordei Verde", "Chiscani", "Gropeni", "Ianca", "Movila Miresii", "Tichilești", "Tudor Vladimirescu", "Unirea", "Viziru"], "Tudor Vladimirescu": ["Cazasu", "Chiscani", "Gemenele", "Movila Miresii", "Romanu", "Siliștea", "Traian"], "Tufești": ["Gropeni", "Stăncuța", "Unirea", "Viziru", "Însurăței"], "Ulmu": ["Ciocile", "Cireșu", "Roșiori", "Surdila-Greci"], "Unirea": ["Gropeni", "Traian", "Tufești", "Viziru"], "Vădeni": ["Brăila", "Cazasu", "Siliștea"], "Victoria": ["Berteștii de Jos", "Bărăganul", "Însurăței"], "Vișani": ["Făurei", "Galbenu", "Grădiștea", "Jirlău", "Mircea Vodă"], "Viziru": ["Bordei Verde", "Traian", "Tufești", "Unirea", "Însurăței"], "Zăvoaia": ["Bordei Verde", "Cireșu", "Dudești", "Ianca", "Însurăței"]};
+/* Scenarii optimizate pe distanța maximă până la reședință (km), Brăila separat sau nu, și numărul de UAT. */
+const SCENARII = [{"D": 35, "brailaSeparat": false, "K": 3, "r": 0.788, "zones": [{"seat": "Ianca", "members": ["Mircea Vodă", "Cireșu", "Traian", "Surdila-Găiseanca", "Grădiștea", "Salcia Tudor", "Făurei", "Șuțești", "Surdila-Greci", "Vișani", "Scorțaru Nou", "Galbenu", "Racovița", "Chiscani", "Jirlău", "Gemenele", "Ianca", "Râmnicelu"]}, {"seat": "Brăila", "members": ["Cazasu", "Brăila", "Viziru", "Siliștea", "Tudor Vladimirescu", "Vădeni", "Unirea", "Gropeni", "Frecăței", "Movila Miresii", "Măxineni", "Romanu"]}, {"seat": "Însurăței", "members": ["Victoria", "Dudești", "Bărăganul", "Berteștii de Jos", "Roșiori", "Ciocile", "Bordei Verde", "Ulmu", "Tufești", "Mărașu", "Tichilești", "Zăvoaia", "Însurăței", "Stăncuța"]}]}, {"D": 35, "brailaSeparat": false, "K": 4, "r": 0.799, "zones": [{"seat": "Tufești", "members": ["Mărașu", "Tufești", "Viziru", "Gropeni", "Stăncuța", "Berteștii de Jos", "Unirea", "Frecăței"]}, {"seat": "Ianca", "members": ["Mircea Vodă", "Surdila-Găiseanca", "Tichilești", "Traian", "Făurei", "Jirlău", "Grădiștea", "Bordei Verde", "Racovița", "Scorțaru Nou", "Zăvoaia", "Siliștea", "Râmnicelu", "Galbenu", "Șuțești", "Chiscani", "Măxineni", "Vișani", "Gemenele", "Surdila-Greci", "Ianca", "Salcia Tudor"]}, {"seat": "Însurăței", "members": ["Cireșu", "Dudești", "Bărăganul", "Însurăței", "Ciocile", "Roșiori", "Ulmu", "Victoria"]}, {"seat": "Brăila", "members": ["Brăila", "Tudor Vladimirescu", "Cazasu", "Vădeni", "Romanu", "Movila Miresii"]}]}, {"D": 35, "brailaSeparat": false, "K": 5, "r": 0.799, "zones": [{"seat": "Tufești", "members": ["Mărașu", "Frecăței", "Tufești", "Viziru", "Tichilești", "Berteștii de Jos", "Unirea", "Gropeni", "Stăncuța"]}, {"seat": "Movila Miresii", "members": ["Măxineni", "Romanu", "Salcia Tudor", "Movila Miresii", "Râmnicelu", "Gemenele", "Racovița", "Șuțești", "Vădeni", "Tudor Vladimirescu", "Scorțaru Nou", "Siliștea"]}, {"seat": "Ianca", "members": ["Traian", "Chiscani", "Mircea Vodă", "Ulmu", "Surdila-Găiseanca", "Făurei", "Galbenu", "Surdila-Greci", "Grădiștea", "Bordei Verde", "Ianca", "Vișani", "Jirlău"]}, {"seat": "Însurăței", "members": ["Roșiori", "Bărăganul", "Însurăței", "Ciocile", "Zăvoaia", "Cireșu", "Victoria", "Dudești"]}, {"seat": "Brăila", "members": ["Brăila", "Cazasu"]}]}, {"D": 35, "brailaSeparat": true, "K": 4, "r": 0.766, "zones": [{"seat": "Movila Miresii", "members": ["Cazasu", "Râmnicelu", "Racovița", "Grădiștea", "Salcia Tudor", "Măxineni", "Tudor Vladimirescu", "Scorțaru Nou", "Siliștea", "Movila Miresii", "Vișani", "Vădeni", "Romanu", "Gemenele", "Chiscani", "Traian", "Șuțești"]}, {"seat": "Tufești", "members": ["Tufești", "Tichilești", "Berteștii de Jos", "Stăncuța", "Gropeni", "Viziru", "Bărăganul", "Mărașu", "Unirea", "Dudești", "Frecăței", "Victoria", "Bordei Verde"]}, {"seat": "Făurei", "members": ["Galbenu", "Surdila-Găiseanca", "Ciocile", "Cireșu", "Mircea Vodă", "Jirlău", "Făurei", "Ianca", "Însurăței", "Surdila-Greci", "Roșiori", "Zăvoaia", "Ulmu"]}, {"seat": "Brăila", "members": ["Brăila"]}]}, {"D": 35, "brailaSeparat": true, "K": 5, "r": 0.799, "zones": [{"seat": "Ianca", "members": ["Chiscani", "Bordei Verde", "Surdila-Greci", "Mircea Vodă", "Galbenu", "Vișani", "Ulmu", "Surdila-Găiseanca", "Traian", "Jirlău", "Grădiștea", "Făurei", "Ianca"]}, {"seat": "Movila Miresii", "members": ["Măxineni", "Vădeni", "Salcia Tudor", "Scorțaru Nou", "Cazasu", "Râmnicelu", "Șuțești", "Movila Miresii", "Racovița", "Romanu", "Gemenele", "Tudor Vladimirescu", "Siliștea"]}, {"seat": "Tufești", "members": ["Tichilești", "Tufești", "Berteștii de Jos", "Mărașu", "Stăncuța", "Viziru", "Gropeni", "Unirea", "Frecăței"]}, {"seat": "Însurăței", "members": ["Însurăței", "Bărăganul", "Cireșu", "Ciocile", "Roșiori", "Zăvoaia", "Victoria", "Dudești"]}, {"seat": "Brăila", "members": ["Brăila"]}]}, {"D": 35, "brailaSeparat": true, "K": 6, "r": 0.794, "zones": [{"seat": "Tufești", "members": ["Tufești", "Mărașu", "Tichilești", "Berteștii de Jos", "Unirea", "Gropeni", "Frecăței", "Viziru", "Stăncuța"]}, {"seat": "Ianca", "members": ["Ulmu", "Surdila-Greci", "Jirlău", "Chiscani", "Făurei", "Bordei Verde", "Grădiștea", "Ianca", "Mircea Vodă", "Vișani", "Galbenu", "Surdila-Găiseanca", "Traian"]}, {"seat": "Movila Miresii", "members": ["Șuțești", "Movila Miresii", "Romanu", "Salcia Tudor", "Scorțaru Nou", "Siliștea", "Vădeni", "Racovița", "Râmnicelu", "Măxineni", "Gemenele"]}, {"seat": "Însurăței", "members": ["Însurăței", "Cireșu", "Ciocile", "Dudești", "Zăvoaia", "Bărăganul", "Victoria", "Roșiori"]}, {"seat": "Brăila", "members": ["Brăila"]}, {"seat": "Cazasu", "members": ["Cazasu", "Tudor Vladimirescu"]}]}, {"D": 40, "brailaSeparat": false, "K": 3, "r": 0.805, "zones": [{"seat": "Brăila", "members": ["Movila Miresii", "Măxineni", "Șuțești", "Tudor Vladimirescu", "Vădeni", "Romanu", "Siliștea", "Cazasu", "Brăila"]}, {"seat": "Ianca", "members": ["Chiscani", "Ianca", "Mircea Vodă", "Gemenele", "Vișani", "Făurei", "Surdila-Greci", "Scorțaru Nou", "Surdila-Găiseanca", "Râmnicelu", "Salcia Tudor", "Jirlău", "Traian", "Galbenu", "Grădiștea", "Racovița"]}, {"seat": "Însurăței", "members": ["Ulmu", "Victoria", "Stăncuța", "Frecăței", "Mărașu", "Ciocile", "Cireșu", "Tichilești", "Unirea", "Bărăganul", "Berteștii de Jos", "Tufești", "Viziru", "Zăvoaia", "Dudești", "Bordei Verde", "Însurăței", "Roșiori", "Gropeni"]}]}, {"D": 40, "brailaSeparat": false, "K": 4, "r": 0.805, "zones": [{"seat": "Însurăței", "members": ["Bărăganul", "Bordei Verde", "Unirea", "Viziru", "Frecăței", "Tichilești", "Mărașu", "Victoria", "Stăncuța", "Ulmu", "Însurăței", "Roșiori", "Cireșu", "Dudești", "Gropeni", "Berteștii de Jos", "Zăvoaia", "Ciocile", "Tufești"]}, {"seat": "Movila Miresii", "members": ["Măxineni", "Romanu", "Racovița", "Salcia Tudor", "Tudor Vladimirescu", "Scorțaru Nou", "Siliștea", "Râmnicelu", "Gemenele", "Șuțești", "Movila Miresii", "Vădeni"]}, {"seat": "Brăila", "members": ["Brăila", "Cazasu"]}, {"seat": "Ianca", "members": ["Chiscani", "Mircea Vodă", "Jirlău", "Traian", "Surdila-Greci", "Ianca", "Galbenu", "Făurei", "Vișani", "Surdila-Găiseanca", "Grădiștea"]}]}, {"D": 40, "brailaSeparat": false, "K": 5, "r": 0.805, "zones": [{"seat": "Însurăței", "members": ["Mărașu", "Victoria", "Ciocile", "Roșiori", "Însurăței", "Bărăganul", "Berteștii de Jos", "Zăvoaia", "Dudești"]}, {"seat": "Movila Miresii", "members": ["Măxineni", "Romanu", "Movila Miresii", "Racovița", "Salcia Tudor", "Gemenele", "Șuțești", "Tudor Vladimirescu", "Râmnicelu", "Siliștea", "Vădeni", "Scorțaru Nou"]}, {"seat": "Tufești", "members": ["Gropeni", "Tufești", "Tichilești", "Viziru", "Unirea", "Stăncuța", "Frecăței"]}, {"seat": "Ianca", "members": ["Ulmu", "Surdila-Găiseanca", "Surdila-Greci", "Făurei", "Traian", "Galbenu", "Jirlău", "Cireșu", "Bordei Verde", "Mircea Vodă", "Grădiștea", "Vișani", "Chiscani", "Ianca"]}, {"seat": "Brăila", "members": ["Cazasu", "Brăila"]}]}, {"D": 40, "brailaSeparat": true, "K": 3, "r": 0.805, "zones": [{"seat": "Movila Miresii", "members": ["Gemenele", "Șuțești", "Grădiștea", "Traian", "Tichilești", "Salcia Tudor", "Jirlău", "Racovița", "Mircea Vodă", "Chiscani", "Unirea", "Movila Miresii", "Râmnicelu", "Romanu", "Cazasu", "Scorțaru Nou", "Siliștea", "Vădeni", "Tudor Vladimirescu", "Vișani", "Măxineni", "Galbenu", "Surdila-Găiseanca"]}, {"seat": "Însurăței", "members": ["Surdila-Greci", "Gropeni", "Viziru", "Bărăganul", "Zăvoaia", "Bordei Verde", "Tufești", "Frecăței", "Victoria", "Cireșu", "Făurei", "Ianca", "Ulmu", "Ciocile", "Stăncuța", "Berteștii de Jos", "Roșiori", "Însurăței", "Dudești", "Mărașu"]}, {"seat": "Brăila", "members": ["Brăila"]}]}, {"D": 40, "brailaSeparat": true, "K": 4, "r": 0.805, "zones": [{"seat": "Movila Miresii", "members": ["Scorțaru Nou", "Racovița", "Movila Miresii", "Măxineni", "Șuțești", "Siliștea", "Tudor Vladimirescu", "Salcia Tudor", "Vădeni", "Romanu", "Gemenele", "Râmnicelu", "Cazasu"]}, {"seat": "Brăila", "members": ["Brăila"]}, {"seat": "Însurăței", "members": ["Gropeni", "Însurăței", "Tichilești", "Berteștii de Jos", "Viziru", "Mărașu", "Bordei Verde", "Frecăței", "Stăncuța", "Bărăganul", "Tufești", "Zăvoaia", "Cireșu", "Dudești", "Unirea", "Ulmu", "Victoria", "Ciocile", "Roșiori"]}, {"seat": "Ianca", "members": ["Făurei", "Jirlău", "Galbenu", "Grădiștea", "Mircea Vodă", "Ianca", "Traian", "Chiscani", "Surdila-Găiseanca", "Surdila-Greci", "Vișani"]}]}, {"D": 40, "brailaSeparat": true, "K": 5, "r": 0.799, "zones": [{"seat": "Movila Miresii", "members": ["Gemenele", "Vădeni", "Romanu", "Cazasu", "Tudor Vladimirescu", "Scorțaru Nou", "Măxineni", "Șuțești", "Salcia Tudor", "Racovița", "Siliștea", "Râmnicelu", "Movila Miresii"]}, {"seat": "Tufești", "members": ["Stăncuța", "Unirea", "Tufești", "Gropeni", "Mărașu", "Viziru", "Berteștii de Jos", "Tichilești", "Frecăței"]}, {"seat": "Ianca", "members": ["Făurei", "Surdila-Greci", "Traian", "Chiscani", "Vișani", "Ianca", "Galbenu", "Bordei Verde", "Jirlău", "Ulmu", "Mircea Vodă", "Surdila-Găiseanca", "Grădiștea"]}, {"seat": "Însurăței", "members": ["Roșiori", "Ciocile", "Dudești", "Însurăței", "Zăvoaia", "Victoria", "Bărăganul", "Cireșu"]}, {"seat": "Brăila", "members": ["Brăila"]}]}];
 const PALETTE = ["#3b6fb6","#e0a526","#4f9a5d","#c4553f","#8a5fb0","#2a9d9b","#d97aa5","#7d8b2e","#b5733a","#5b7c99","#a83f6f","#6aa7d8","#9c8a5b","#46705a"];
 const CAT = [
   {k:0,label:"Fără date",cls:"k0",col:"var(--nodata)",hex:"#c9ccc7"},
@@ -207,14 +212,14 @@ const S = {
   metric:"net",
   groups:[],          // [{id,name,color,members:Set(key)}]
   activeGroup:null,
-  savings:40,         // % economie la personalul administrativ după comasare
-  threshold:10000,
-  coverTarget:false,
+  ip:{},              // ipotezele modelului de economii (vezi IPOTEZE_DEF)
+  autoD:35, autoBS:true,
   geoStatus:"Se încarcă contururile UAT…", geoOk:null,
   adjacency:null,     // Map(key -> Set(key))
   selected:null, openGroup:null
 };
 const byKey = new Map(UAT.map(u=>[u.key,u]));
+const ADJ_KEYS = new Map(Object.entries(ADJ_NAMES).map(([n,l])=>[norm(n),new Set(l.map(norm))]));
 
 /* ============================================================
    3. UTILITARE
@@ -240,14 +245,14 @@ function parseNum(v){
   return parseFloat(s);
 }
 function save(){
-  try{ localStorage.setItem("simuat2.state", JSON.stringify({
+  try{ localStorage.setItem("simuat3.state", JSON.stringify({
     groups:S.groups.map(g=>({id:g.id,name:g.name,color:g.color,members:[...g.members]})),
-    savings:S.savings, threshold:S.threshold,
+    ip:S.ip, autoD:S.autoD, autoBS:S.autoBS,
   })); }catch(e){}
 }
 function load(){
-  try{ const st=JSON.parse(localStorage.getItem("simuat2.state")||"null"); if(!st) return false;
-    S.savings=st.savings??40; S.threshold=st.threshold??10000;
+  try{ const st=JSON.parse(localStorage.getItem("simuat3.state")||"null"); if(!st) return false;
+    S.ip={...IPOTEZE_DEF,...(st.ip||{})}; S.autoD=st.autoD??35; S.autoBS=st.autoBS??true;
     S.groups=(st.groups||[]).map(g=>({...g,members:new Set(g.members.filter(k=>byKey.has(k)))}));
     return true; }catch(e){ return false; }
 }
@@ -279,21 +284,77 @@ function chip(u,short){
   const label = short ? (S.metric==="net" ? (["","sub 50%","50–75%","75–100%","peste 100%"][c.k]) : c.label.replace("Acoperă ","").replace("Nu acoperă nici ","nu acoperă ")) : c.label;
   return `<span class="chip" style="background:${c.hex};color:${c.ink||(c.k>=3?"#3a1a0c":"#fff")}">${esc(label)}${short&&S.metric==="net"?"":extra}</span>`;
 }
-function groupStats(keys){
+
+/* ---------- Geografie: vecinătăți și distanțe ---------- */
+/* Vecinătăți calculate din contururi (graniță comună de cel puțin 200 m) și centrele UAT (lon, lat). */
+function adjOf(key){ return S.adjacency?.get(key) || ADJ_KEYS.get(key) || new Set(); }
+function contiguous(keys){
+  const ks=[...keys]; if(ks.length<2) return true; const set=new Set(ks), seen=new Set([ks[0]]), q=[ks[0]];
+  while(q.length){ const k=q.pop(); for(const n of adjOf(k)) if(set.has(n)&&!seen.has(n)){ seen.add(n); q.push(n); } }
+  return seen.size===set.size;
+}
+function km(a,b){
+  const A=CENTRE[byKey.get(a).name], B=CENTRE[byKey.get(b).name]; if(!A||!B) return NaN;
+  const R=6371, r=Math.PI/180, dLat=(B[1]-A[1])*r, dLon=(B[0]-A[0])*r;
+  const h=Math.sin(dLat/2)**2+Math.cos(A[1]*r)*Math.cos(B[1]*r)*Math.sin(dLon/2)**2; return 2*R*Math.asin(Math.sqrt(h));
+}
+/* Reședința: municipiul sau cel mai mare oraș din grupare; altfel comuna cea mai centrală (cea mai mică distanță maximă). */
+function seatOf(keys,pref){
+  const us=[...keys].map(k=>byKey.get(k)); if(!us.length) return null;
+  if(pref && keys.has(pref)) return pref;
+  const towns=us.filter(u=>u.tip!=="C").sort((a,b)=>b.pop-a.pop); if(towns.length) return towns[0].key;
+  let best=null,bd=Infinity; for(const u of us){ const d=Math.max(...us.map(o=>km(u.key,o.key)||0)); if(d<bd-0.01||(Math.abs(d-bd)<0.01&&u.pop>byKey.get(best).pop)){bd=d;best=u.key;} }
+  return best;
+}
+
+/* ---------- Modelul de economii la comasare ----------
+   Pentru fiecare primărie absorbită (toate, mai puțin reședința):
+   1. dispare stratul de conducere: primar, viceprimar, secretar general (indemnizații/salarii brute lunare + CAM 2,25%)
+      și posturile dublate de suport (contabil-șef, achiziții, juridic, resurse umane etc.); plafonat la un procent din aparatul acelei primării,
+      pentru că ghișeele (registru agricol, stare civilă, taxe, asistență socială) rămân ca birou local;
+   2. scade numărul total de consilieri locali (art. 112 Codul administrativ: numărul se stabilește după populație);
+   3. funcționare: dispar costurile proprii ale unei primării separate (licențe software, audit, servicii juridice, autoturism, bancă, IT);
+   4. se scade costul armonizării salariale: personalul preluat trece pe grila (mai mare) a noii UAT.
+   Opțional: îmbunătățirea colectării impozitelor locale printr-un serviciu unic de taxe (implicit 0%). */
+const CAM = 1.0225;
+const IPOTEZE_DEF = {primar:15000, viceprimar:10600, secretar:12000, posturi:3, salariu:9000, consilier:1200, plafon:60, functionare:120000, armonizare:5, colectare:0};
+function nrConsilieri(p){ for(const [lim,n] of [[1500,9],[3000,11],[5000,13],[10000,15],[20000,17],[50000,19],[100000,21],[200000,23]]) if(p<=lim) return n; return 27; }
+function stratConducere(u){
+  const I=S.ip; const s=(I.primar+I.viceprimar+I.secretar+I.posturi*I.salariu)*12*CAM;
+  return Math.min(s, I.plafon/100*u.fin.pa);
+}
+function groupStats(keys,seatPref){
+  keys = keys instanceof Set ? keys : new Set(keys);
   const us=[...keys].map(k=>byKey.get(k)); const pop=us.reduce((s,u)=>s+u.pop,0);
   const hasFin = us.length>0 && us.every(u=>u.fin);
   const sum=f=>us.reduce((s,u)=>s+(u.fin?u.fin[f]:0),0);
-  let v=NaN,pa=NaN,pt=NaN,f=NaN,econ=0;
+  const seat=seatOf(keys,seatPref);
+  let v=NaN,pa=NaN,pt=NaN,f=NaN,econ=0,eP=0,eC=0,eF=0,eA=0,colect=0,consB=0,consA=0;
   if(hasFin){
     v=sum("v"); pa=sum("pa"); pt=sum("pt"); f=sum("f");
-    if(us.length>1){ const paMax=Math.max(...us.map(u=>u.fin.pa)); econ=(pa-paMax)*S.savings/100; pa-=econ; pt-=econ; f-=econ; }
+    consB=us.reduce((s,u)=>s+nrConsilieri(u.pop),0); consA=us.length>1?nrConsilieri(pop):consB;
+    if(us.length>1){
+      const abs=us.filter(u=>u.key!==seat);
+      eP=abs.reduce((s,u)=>s+stratConducere(u),0);
+      eC=Math.max(0,consB-consA)*S.ip.consilier*12*CAM;
+      eA=S.ip.armonizare/100*(abs.reduce((s,u)=>s+u.fin.pa,0)-eP);
+      eF=S.ip.functionare*abs.length;
+      econ=eP+eC+eF-eA;
+      colect=S.ip.colectare/100*us.reduce((s,u)=>s+(u.fin.v-(u.fin.pit||0)),0);
+      v+=colect; pa+=-eP-eC+eA; pt+=-eP-eC+eA; f-=econ;
+    }
   }
   const opt=k=>us.every(u=>u.fin&&u.fin[k]!=null&&!isNaN(u.fin[k]))?sum(k):NaN;
   const area=us.every(u=>u.area)?us.reduce((s,u)=>s+u.area,0):NaN;
-  return {pop,n:us.length,hasFin,v,pa,pt,f,econ,cat:hasFin?category(v,pa,pt,f):0,cover:hasFin? v/f : NaN,
-    pit:opt("pit"),eq:opt("eq"),dev:opt("dev"),tv:opt("tv"),tc:opt("tc"),tvd:opt("tvd"),area,deficit:hasFin? f-v : NaN,
-    fNet:hasFin? f-opt("tvd") : NaN, coverNet:hasFin? v/(f-opt("tvd")) : NaN};
+  const tvd=opt("tvd");
+  const dmax=seat&&us.length>1?Math.max(...us.map(u=>km(u.key,seat)||0)):0;
+  return {pop,n:us.length,hasFin,v,pa,pt,f,econ,eP,eC,eF,eA,colect,consB,consA,seat,dmax,contig:contiguous(keys),
+    cat:hasFin?category(v,pa,pt,f):0,cover:hasFin? v/f : NaN,
+    pit:opt("pit"),eq:opt("eq"),dev:opt("dev"),tv:opt("tv"),tc:opt("tc"),tvd,area,deficit:hasFin? f-v : NaN,
+    fNet:hasFin? f-tvd : NaN, coverNet:hasFin? v/(f-tvd) : NaN,
+    coverNetNow:hasFin? sum("v")/(sum("f")-tvd) : NaN};
 }
+function gStats(g){ return groupStats(g.members,g.seat); }
 function groupOf(key){ return S.groups.find(g=>g.members.has(key)); }
 
 /* ============================================================
@@ -450,13 +511,15 @@ function initMap(){
     attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · Date: MF COFOG3 2025, INS RPL 2021',
     maxZoom:16, opacity:.55}).addTo(map);
 }
+function isSeat(u){ const gs=S.mode==="summary"?SUMMARY:(S.mode==="edit"||S.mode==="auto")?S.groups:null; if(!gs) return false; const g=gs.find(z=>z.members.has(u.key)); return !!g&&g.members.size>1&&gStats(g).seat===u.key; }
 function styleFor(u){
   let fill="#c9ccc7", op=.82;
   if(S.mode==="actual"||S.mode==="data"){ fill=curCats()[curCat(u)].hex; if(!u.fin){ fill=popColor(u.pop); } }
   else if(S.mode==="summary"){ const g=SUMMARY.find(z=>z.members.has(u.key)); fill=g?g.color:"#e8e9e6"; op=.85; }
   else { const g=groupOf(u.key); fill=g?g.color:"#e8e9e6"; op=g?.85:.5; }
   const sel = S.mode==="edit" && S.activeGroup && groupOf(u.key)?.id===S.activeGroup;
-  return {color: sel?"#111":"#ffffff", weight: sel?2.2:.9, fillColor:fill, fillOpacity:op};
+  const seat = S.mode!=="actual" && S.mode!=="data" && isSeat(u);
+  return {color: sel?"#111":seat?"#1d2321":"#ffffff", weight: sel?2.2:seat?2:.9, dashArray: seat&&!sel?"4 3":null, fillColor:fill, fillOpacity:op};
 }
 function popColor(p){ return p>=10000?"#2c5d8f": p>=5000?"#5f8fc0": p>=3000?"#9dbbdb": p>=2000?"#c9d9ea":"#e7eef6"; }
 function drawGeo(){
@@ -479,9 +542,10 @@ function drawLabels(){
   if(S.mode==="edit"||S.mode==="auto"||S.mode==="summary"){
     for(const g of (S.mode==="summary"?SUMMARY:S.groups)){ if(g.members.size<2) continue;
       const b=L.latLngBounds([]); g.members.forEach(k=>{const l=byKey.get(k).layer; if(l) b.extend(l.getBounds());});
-      if(!b.isValid()) continue; const st=groupStats(g.members);
-      L.tooltip({permanent:true,direction:"center",className:"lbl"}).setLatLng(b.getCenter())
-        .setContent(`${esc(g.name)}<br>${fmt(st.pop)} loc.`).addTo(labelLayer);
+      if(!b.isValid()) continue; const st=gStats(g);
+      const sl=st.seat&&byKey.get(st.seat).layer; const at=sl?sl.getBounds().getCenter():b.getCenter();
+      L.tooltip({permanent:true,direction:"center",className:"lbl"}).setLatLng(at)
+        .setContent(`★ ${esc(g.name)}<br>${fmt(st.pop)} loc.${st.contig?"":"<br>⚠ necontinuă"}`).addTo(labelLayer);
     }
   }
 }
@@ -519,86 +583,92 @@ function cleanupGroups(){
 function singletons(){
   S.groups=UAT.map((u,i)=>({id:"s"+i,name:u.name,color:PALETTE[i%PALETTE.length],members:new Set([u.key])}));
 }
-/* Propunerea oficială (5 UAT), independentă de grupările editate de vizitator */
-const SUMMARY = Object.entries(PRESET_5).map(([name,list],i)=>({id:"z"+i,name,color:PALETTE[i],members:new Set(list.map(n=>matchUAT(n).key))}));
+/* Propunerea oficială, independentă de grupările editate de vizitator */
+const mkZones=(preset)=>preset.map((z,i)=>({id:"z"+i,name:z.name,seat:matchUAT(z.seat).key,color:PALETTE[i%PALETTE.length],members:new Set(z.members.map(n=>matchUAT(n).key))}));
+const SUMMARY = mkZones(PRESET_OPT);
+const OLD5 = mkZones(PRESET_VECHI);
 function pct(x){ return isNaN(x)?"–":(x*100).toFixed(0)+"%"; }
+function scenarioTotals(zones){
+  const st=zones.map(z=>groupStats(z.members,z.seat));
+  const s=k=>st.reduce((a,x)=>a+x[k],0);
+  const rural=st.filter(x=>x.hasFin&&(x.n>1||byKey.get(x.seat).tip!=="M"));
+  return {st,econ:s("econ"),eP:s("eP"),eC:s("eC"),eF:s("eF"),eA:s("eA"),colect:s("colect"),
+    consB:s("consB"),consA:s("consA"),minCov:Math.min(...rural.map(x=>x.coverNet)),dmax:Math.max(...st.map(x=>x.dmax)),
+    allContig:st.every(x=>x.contig)};
+}
 function summaryHtml(){
-  const total=UAT.reduce((s,u)=>s+u.pop,0);
-  const zs=SUMMARY.map(z=>{ const st=groupStats(z.members); const parts=[...z.members].map(k=>byKey.get(k));
+  if(!UAT.every(u=>u.fin)) return `<p class="note">Se încarcă datele financiare…</p>`;
+  const zs=SUMMARY.map(z=>{ const st=groupStats(z.members,z.seat); const parts=[...z.members].map(k=>byKey.get(k));
     const rs=parts.map(u=>netRatio(u.fin)).filter(x=>!isNaN(x));
-    return {z,st,min:Math.min(...rs),max:Math.max(...rs),n:parts.length,smallest:Math.min(...parts.map(u=>u.pop))}; })
-    .sort((a,b)=>b.st.coverNet-a.st.coverNet);
-  const econ=zs.reduce((s,x)=>s+x.st.econ,0);
-  const under10now=UAT.filter(u=>u.pop<10000).length;
-  const persOk=zs.filter(x=>x.st.v>=x.st.pt).length;
-  const uatNow75=UAT.filter(u=>netRatio(u.fin)>=.75).length;
-  const zon75=zs.filter(x=>x.st.coverNet>=.75).length;
-  const best=zs[0], worst=zs[zs.length-1];
-  const bar=(x)=>{ const w=Math.max(0,Math.min(1.2,x))/1.2*100; const c=netCat(x); return `<div class="bar"><span style="width:${w}%;background:${NCAT[c].hex}"></span><i style="left:${100/1.2}%"></i></div>`; };
+    return {z,st,min:Math.min(...rs),max:Math.max(...rs),n:parts.length}; })
+    .sort((a,b)=>b.st.pop-a.st.pop);
+  const T=scenarioTotals(SUMMARY), O=scenarioTotals(OLD5);
+  const nPrim=44-SUMMARY.length;
+  const bar=(now,after)=>{ const w=x=>Math.max(0,Math.min(1.2,x))/1.2*100; return `<div class="bar"><span style="width:${w(after)}%;background:${NCAT[netCat(after)].hex}"></span><em style="width:${w(now)}%"></em><i style="left:${100/1.2}%"></i></div>`; };
+  const ruralNow=(()=>{ const us=UAT.filter(u=>u.tip!=="M"); const v=us.reduce((s,u)=>s+u.fin.v,0), fn=us.reduce((s,u)=>s+u.fin.f-u.fin.tvd,0); return v/fn; })();
+  const ruralZ=zs.filter(x=>x.st.n>1), ruralAfter=ruralZ.reduce((s,x)=>s+x.st.v,0)/ruralZ.reduce((s,x)=>s+x.st.fNet,0);
   return `
   <div class="lead">
-    <div class="big">44 → 5</div>
-    <p>Propunerea reorganizează cele 44 de primării din județul Brăila în <b>5 unități administrativ-teritoriale</b>, în jurul municipiului Brăila, al orașelor Ianca, Făurei și Însurăței și al comunei Movila Miresii. Fiecare are peste ${fmt(Math.floor(Math.min(...zs.map(x=>x.st.pop))/1000)*1000)} de locuitori.</p>
+    <div class="big">44 → ${SUMMARY.length}</div>
+    <p>Municipiul Brăila rămâne separat, iar cele 43 de orașe și comune se reorganizează în <b>${SUMMARY.length-1} unități</b>, cu reședința la ${ruralZ.map(x=>"<b>"+esc(x.z.name)+"</b>").join(", ").replace(/, ([^,]*)$/," și $1")}. Fiecare zonă e formată numai din comune <b>lipite una de alta</b>, iar nicio comună nu e la mai mult de ${Math.ceil(T.dmax)} km (în linie dreaptă) de reședință.</p>
   </div>
   <div class="kpis">
-    <div class="kpi"><b>${fmtLei(econ)}</b><span>lei pe an economie estimată la aparatul primăriilor</span></div>
-    <div class="kpi"><b>${persOk} din 5</b><span>zone își plătesc tot personalul din venituri proprii</span></div>
-    <div class="kpi"><b>${zon75} din 5</b><span>zone acoperă peste 75% din funcționarea proprie (azi: ${uatNow75} din 44 UAT)</span></div>
+    <div class="kpi"><b>${fmtLei(T.econ)}</b><span>lei pe an economie estimată (personal + funcționare)</span></div>
+    <div class="kpi"><b>${nPrim}</b><span>primării desființate ca structuri de conducere; rămân ca birouri locale</span></div>
+    <div class="kpi"><b>${pct(ruralNow)} → ${pct(ruralAfter)}</b><span>cât își acoperă zona rurală din venituri proprii</span></div>
+  </div>
+  <div class="section"><h2>De unde vine economia</h2>
+    <div class="tablewrap" style="max-height:none"><table class="ind"><tbody>
+      <tr><td>Primari, viceprimari, secretari generali și posturi de suport dublate (${nPrim} primării)</td><td class="n">${fmtLei(T.eP)}</td></tr>
+      <tr><td>Consilieri locali: de la ${fmt(T.consB)} la ${fmt(T.consA)}</td><td class="n">${fmtLei(T.eC)}</td></tr>
+      <tr><td>Funcționarea unei primării separate (licențe, audit, juridic, autoturism, IT, bancă)</td><td class="n">${fmtLei(T.eF)}</td></tr>
+      <tr><td>Minus armonizarea salarială a personalului preluat</td><td class="n">−${fmtLei(T.eA)}</td></tr>
+      <tr><td><b>Total pe an</b></td><td class="n"><b>${fmtLei(T.econ)}</b></td></tr>
+    </tbody></table></div>
+    <p class="note">Sume în lei pe an, la nivelul salariilor din 2025. Ipotezele (salarii, plafon, costuri de funcționare) se pot modifica în fila Construiește zone. Personalul de la ghișee rămâne în fiecare comună, ca birou local.</p>
   </div>
   <div class="section"><h2>Cât din funcționarea proprie acoperă fiecare zonă</h2>
-    <p class="note">Venituri proprii împărțite la cheltuielile de funcționare de care răspunde primăria, după comasare. Linia verticală marchează 100%.</p>
+    <p class="note">Venituri proprii împărțite la cheltuielile de funcționare de care răspunde primăria. Bara închisă: după comasare; conturul: azi, toate comunele la un loc. Linia verticală marchează 100%.</p>
     <div class="zones">${zs.map(x=>`<div class="zrow" data-z="${x.z.id}">
-      <div class="zhead"><span class="sw" style="background:${x.z.color}"></span><b>${esc(x.z.name)}</b><span class="note">${x.n} UAT · ${fmt(x.st.pop)} loc.</span><b class="zval">${pct(x.st.coverNet)}</b></div>
-      ${bar(x.st.coverNet)}
-      <div class="note">Azi, comunele componente acoperă între ${pct(x.min)} și ${pct(x.max)}. Personal plătit din venituri proprii: ${pct(x.st.v/x.st.pt)}.</div>
+      <div class="zhead"><span class="sw" style="background:${x.z.color}"></span><b>${esc(x.z.name)}</b><span class="note">${x.n} UAT · ${fmt(x.st.pop)} loc.${x.n>1?` · max. ${Math.ceil(x.st.dmax)} km`:""}</span><b class="zval">${pct(x.st.coverNet)}</b></div>
+      ${bar(x.st.coverNetNow,x.st.coverNet)}
+      <div class="note">${x.n>1?`Azi, comunele componente acoperă între ${pct(x.min)} și ${pct(x.max)}. Economie: ${fmtLei(x.st.econ)} lei/an.`:"Rămâne separat."}</div>
     </div>`).join("")}</div>
   </div>
-  <div class="section"><h2>Pe scurt</h2>
+  <div class="section"><h2>Cum a fost construită</h2>
     <ul class="findings">
-      <li>Azi, ${under10now} din cele 44 de UAT au sub 10.000 de locuitori. După reorganizare, niciuna.</li>
-      <li>Cea mai solidă zonă este <b>${esc(best.z.name)}</b>, care își acoperă ${pct(best.st.coverNet)} din funcționarea proprie.</li>
-      <li>Cea mai fragilă este <b>${esc(worst.z.name)}</b> (${pct(worst.st.coverNet)}), care ar avea nevoie în continuare de sprijin sau de o altă configurare.</li>
-      <li>Economia vine din unificarea aparatului primăriilor: o singură primărie, un singur secretar general și un singur serviciu de taxe pe zonă. Ipoteza de calcul: ${S.savings}% din cheltuielile cu aparatul primăriilor absorbite.</li>
+      <li>Zonele au fost calculate cu un model de optimizare pe toate variantele posibile, nu după praguri de populație: fiecare zonă e un teritoriu continuu, cu reședința într-un oraș sau într-o comună mare, iar împărțirea maximizează acoperirea din venituri proprii a celei mai slabe zone.</li>
+      <li>Comunele cu venituri mari (Chiscani, Vădeni, Frecăței) sunt repartizate în zone rurale, nu absorbite de municipiu, ca să ridice zonele sărace.</li>
+      <li>Față de propunerea anterioară cu 5 UAT, economia e similară (${fmtLei(O.econ)} lei), dar cea mai slabă zonă urcă de la ${pct(O.minCov)} la ${pct(T.minCov)} acoperire.</li>
+      <li>Nicio zonă nu ajunge la 100%: întregul județ, cu municipiu cu tot, acoperă azi ${pct(UAT.reduce((s,u)=>s+u.fin.v,0)/UAT.reduce((s,u)=>s+u.fin.f-u.fin.tvd,0))} din funcționarea proprie. Comasarea reduce dependența de transferuri, dar nu o elimină.</li>
     </ul>
   </div>
   <div class="row"><button class="btn primary" id="goEdit">Modifică zonele</button><button class="btn" id="goMap">Vezi situația de azi</button></div>
   <p class="note">Date: Ministerul Finanțelor, execuție bugetară COFOG3 la 31.12.2025; INS, RPL 2021. Metodologia completă este în fila Surse.</p>`;
 }
-function applyPreset(preset){
-  S.groups=Object.entries(preset).map(([name,list],i)=>({id:"p"+i,name,color:PALETTE[i%PALETTE.length],members:new Set(list.map(n=>matchUAT(n).key))}));
+function presetGroups(zones){
+  S.groups=zones.map((z,i)=>({id:"p"+i+"_"+Date.now().toString(36),name:z.name,seat:z.seat,color:z.color||PALETTE[i%PALETTE.length],members:new Set(z.members)}));
   const used=new Set(S.groups.flatMap(g=>[...g.members]));
   UAT.filter(u=>!used.has(u.key)).forEach((u,i)=>S.groups.push({id:"r"+i,name:u.name,color:"#9aa0a6",members:new Set([u.key])}));
-  S.activeGroup=S.groups[0]?.id||null; save(); restyle(); render();
+  S.activeGroup=null; save(); restyle(); render();
 }
+function applyPreset(){ presetGroups(SUMMARY); }
 function renameGroup(g){
-  // numele grupării = UAT-ul cu cea mai mare populație
-  const big=[...g.members].map(k=>byKey.get(k)).sort((a,b)=>b.pop-a.pop)[0]; g.name=big?big.name:g.name;
+  const s=seatOf(g.members,g.seat); g.name=s?byKey.get(s).name:g.name;
 }
 
-/* Scenariu automat: comasează repetat cea mai mică grupare sub prag cu o grupare vecină.
-   Preferință: vecinul care conține un oraș/municipiu, apoi cel mai mic vecin (zone echilibrate). */
-function autoScenario(){
-  if(!S.adjacency){ return "Scenariul automat are nevoie de contururi (pentru vecinătăți)."; }
-  singletons();
-  const T=S.threshold;
-  const neighborsOf=g=>{ const s=new Set(); g.members.forEach(k=>S.adjacency.get(k)?.forEach(n=>{ if(!g.members.has(n)) s.add(groupOf(n)); })); s.delete(undefined); return [...s]; };
-  const hasTown=g=>[...g.members].some(k=>byKey.get(k).tip!=="C");
-  const pop=g=>groupStats(g.members).pop;
-  let guard=0;
-  const step=(pick)=>{
-    const g=pick(); if(!g) return false; const nb=neighborsOf(g); if(!nb.length) return false;
-    nb.sort((a,b)=> (hasTown(b)-hasTown(a)) || (pop(a)-pop(b)));
-    const tgt=nb[0]; g.members.forEach(k=>tgt.members.add(k)); g.members.clear(); cleanupGroups(); return true;
-  };
-  while(guard++<200 && step(()=>S.groups.filter(g=>pop(g)<T).sort((a,b)=>pop(a)-pop(b))[0]));
-  if(S.coverTarget){
-    guard=0;
-    while(guard++<200 && step(()=>S.groups.map(g=>[g,groupStats(g.members)]).filter(([g,st])=>st.hasFin&&st.cover<1).sort((a,b)=>a[1].cover-b[1].cover).map(x=>x[0])[0]));
-  }
-  S.groups.forEach((g,i)=>{ renameGroup(g); g.color=PALETTE[i%PALETTE.length]; });
-  S.activeGroup=null; save(); restyle(); render();
-  const below=S.groups.filter(g=>pop(g)<T).length;
-  return `${S.groups.length} UAT rezultate${below?`, ${below} rămase sub prag (fără vecini disponibili)`:""}.`;
+/* Scenarii optimizate (calculate offline, model de programare liniară în numere întregi):
+   pentru fiecare distanță maximă până la reședință și număr de UAT, împărțirea în teritorii continue
+   care maximizează acoperirea din venituri proprii a celei mai slabe zone, apoi minimizează distanțele. */
+function scenarioOptions(){
+  const D=S.autoD, bs=S.autoBS;
+  return SCENARII.filter(s=>s.D===D&&s.brailaSeparat===bs).sort((a,b)=>a.K-b.K);
+}
+function applyScenario(sc){
+  const zones=sc.zones.map((z,i)=>{ const seat=matchUAT(z.seat).key; return {name:byKey.get(seat).name,seat,color:PALETTE[i%PALETTE.length],members:new Set(z.members.map(n=>matchUAT(n).key))}; })
+    .sort((a,b)=>groupStats(b.members).pop-groupStats(a.members).pop);
+  zones.forEach((z,i)=>z.color=PALETTE[i%PALETTE.length]);
+  presetGroups(zones);
 }
 
 /* ============================================================
@@ -628,8 +698,8 @@ function templateCSV(){
     UAT.map(u=>`${u.name};${u.fin?u.fin.v:""};${u.fin?u.fin.pa:""};${u.fin?u.fin.pt:""};${u.fin?u.fin.f:""}`).join("\n");
 }
 function scenarioCSV(){
-  const rows=["grupare;uat;tip;populatie_2021"];
-  for(const g of S.groups) for(const k of g.members){const u=byKey.get(k); rows.push(`${g.name};${u.name};${u.tip};${u.pop}`);}
+  const rows=["grupare;resedinta;uat;tip;populatie_2021;economie_estimata_zona_lei"];
+  for(const g of S.groups){ const st=gStats(g); for(const k of g.members){const u=byKey.get(k); rows.push(`${g.name};${byKey.get(st.seat).name};${u.name};${u.tip};${u.pop};${Math.round(st.econ)}`);} }
   rows.push(""); rows.push("grupare;nr_uat;populatie;suprafata_km2;impozit_venit_colectat;venituri_proprii;personal_administrativ;personal_total;functionare;dezvoltare;tva_cheltuieli_descentralizate;functionare_fara_descentralizate;finantat_din_transferuri;acoperire_totala;acoperire_fara_descentralizate");
   const r0=x=>isNaN(x)?"":Math.round(x);
   for(const g of S.groups){const st=groupStats(g.members); rows.push([g.name,st.n,st.pop,isNaN(st.area)?"":st.area.toFixed(1),r0(st.pit),r0(st.v),r0(st.pa),r0(st.pt),r0(st.f),r0(st.dev),r0(st.tvd),r0(st.fNet),r0(st.deficit),st.hasFin?(st.cover*100).toFixed(1)+"%":"",isNaN(st.coverNet)?"":(st.coverNet*100).toFixed(1)+"%"].join(";"));}
@@ -671,7 +741,7 @@ function render(){
   const total=UAT.reduce((s,u)=>s+u.pop,0);
   if(S.mode==="summary"){
     panel.innerHTML=(S.geoOk===true?"":statusHtml())+summaryHtml();
-    panel.querySelector("#goEdit").onclick=()=>{ applyPreset(PRESET_5); S.mode="edit"; restyle(); render(); };
+    panel.querySelector("#goEdit").onclick=()=>{ S.mode="edit"; applyPreset(); };
     panel.querySelector("#goMap").onclick=()=>{ S.mode="actual"; restyle(); render(); };
     panel.querySelectorAll(".zrow").forEach(el=>el.onclick=()=>{ const z=SUMMARY.find(x=>x.id===el.dataset.z); const b=L.latLngBounds([]); z.members.forEach(k=>{const l=byKey.get(k).layer; if(l) b.extend(l.getBounds());}); if(b.isValid()&&map) map.fitBounds(b,{padding:[20,20]}); });
   }
@@ -691,34 +761,40 @@ function render(){
     const covered=new Set(S.groups.flatMap(g=>[...g.members]));
     panel.innerHTML=`${statusHtml()}
     <p class="hint">Alege o grupare din listă, apoi atinge comunele pe hartă sau în tabel ca să le adaugi sau să le scoți. Fără grupare activă, un clic pornește o grupare nouă.</p>
-    <div class="row"><button class="btn primary" id="b5">Propunerea cu 5 UAT</button><button class="btn" id="bs">Fiecare UAT separat</button><button class="btn" id="bn">Grupare nouă goală</button></div>
-    <label class="f">Economie la personalul administrativ după comasare: <b id="sv">${S.savings}%</b><input type="range" id="sav" min="0" max="80" step="5" value="${S.savings}"></label>
+    <div class="row"><button class="btn primary" id="b5">Propunerea optimizată</button><button class="btn" id="bo">Propunerea anterioară (5 UAT)</button><button class="btn" id="bs">Fiecare UAT separat</button><button class="btn" id="bn">Grupare nouă goală</button></div>
+    ${totalsHtml(S.groups)}
+    ${ipotezeHtml()}
     <div class="section"><h2>${S.groups.length} grupări ${covered.size<44?`<span class="note">· ${44-covered.size} UAT nealocate</span>`:""}</h2><div class="groups">
-    ${S.groups.slice().sort((a,b)=>groupStats(b.members).pop-groupStats(a.members).pop).map(g=>groupCard(g)).join("")}</div></div>
+    ${S.groups.slice().sort((a,b)=>gStats(b).pop-gStats(a).pop).map(g=>groupCard(g)).join("")}</div></div>
     ${covered.size<44?`<div class="section"><h2>Nealocate</h2><div class="tablewrap"><table><tbody>${UAT.filter(u=>!covered.has(u.key)).map(u=>`<tr data-k="${u.key}"><td>${esc(u.name)}</td><td class="n">${fmt(u.pop)}</td></tr>`).join("")}</tbody></table></div></div>`:""}
     ${exportRow()}`;
-    panel.querySelector("#b5").onclick=()=>applyPreset(PRESET_5);
+    panel.querySelector("#b5").onclick=()=>applyPreset();
+    panel.querySelector("#bo").onclick=()=>presetGroups(OLD5);
+    bindIpoteze();
     panel.querySelector("#bs").onclick=()=>{singletons();S.activeGroup=null;save();restyle();render();};
     panel.querySelector("#bn").onclick=()=>{ const g={id:"n"+Date.now().toString(36),name:"Grupare nouă",color:PALETTE[S.groups.length%PALETTE.length],members:new Set()}; S.groups.push(g); S.activeGroup=g.id; render(); };
-    panel.querySelector("#sav").oninput=e=>{S.savings=+e.target.value; panel.querySelector("#sv").textContent=S.savings+"%"; save(); clearTimeout(render._t); render._t=setTimeout(()=>{restyle();render();},250);};
     panel.querySelectorAll(".group").forEach(el=>el.onclick=()=>{S.activeGroup=S.activeGroup===el.dataset.g?null:el.dataset.g; restyle(); render();});
     panel.querySelectorAll(".rename").forEach(inp=>{ inp.onclick=e=>e.stopPropagation(); inp.onchange=e=>{const g=S.groups.find(x=>x.id===inp.dataset.g); g.name=e.target.value||g.name; save(); drawLabels();}; });
     bindExport();
   }
   else if(S.mode==="auto"){
+    const opts=scenarioOptions();
     panel.innerHTML=`${statusHtml()}
-    <div class="section"><h2>Propunere automată</h2>
-    <p class="note">Comasează repetat cea mai mică UAT sub prag cu o UAT vecină, cu preferință pentru vecinii care au deja un oraș. Rezultatul se poate ajusta apoi în fila Construiește zone.</p>
-    <div class="row"><label class="f">Prag minim de populație<select id="thr">${[3000,5000,7500,10000,15000,20000].map(t=>`<option value="${t}" ${t===S.threshold?"selected":""}>${fmt(t)} locuitori</option>`).join("")}</select></label>
-    <label class="f" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="cov" ${S.coverTarget?"checked":""} ${UAT.every(u=>u.fin)?"":"disabled"}> și acoperire funcționare din venituri proprii</label></div>
-    <div class="row"><button class="btn primary" id="run" ${S.adjacency?"":"disabled"}>Generează scenariul</button></div>
-    <p class="note" id="msg">${UAT.every(u=>u.fin)?"":"Criteriul de acoperire se activează după importul datelor financiare pentru toate cele 44 de UAT."}</p></div>
-    <div class="section"><h2>Rezultat: ${S.groups.length} UAT</h2><div class="groups">${S.groups.slice().sort((a,b)=>groupStats(b.members).pop-groupStats(a.members).pop).map(g=>groupCard(g,true)).join("")}</div></div>
+    <div class="section"><h2>Propunere automată optimizată</h2>
+    <p class="note">Nu mai folosește praguri de populație. Un model de optimizare a evaluat toate împărțirile posibile ale județului și a ales, pentru fiecare variantă, pe cea în care: (1) fiecare zonă e un teritoriu continuu, din comune cu graniță comună; (2) reședința e un oraș sau o comună de peste 3.500 de locuitori, iar nicio comună nu e mai departe de reședință decât distanța aleasă; (3) cea mai slabă zonă își acoperă cât mai mult din funcționarea proprie din venituri proprii, după economiile la personal și funcționare; (4) la egalitate, distanțele până la reședință sunt cât mai mici.</p>
+    <div class="row"><label class="f">Distanța maximă până la reședință<select id="ad">${[...new Set(SCENARII.map(s=>s.D))].map(d=>`<option value="${d}" ${d===S.autoD?"selected":""}>${d} km în linie dreaptă</option>`).join("")}</select></label>
+    <label class="f" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="abs" ${S.autoBS?"checked":""}> Municipiul Brăila rămâne separat</label></div>
+    <div class="tablewrap" style="max-height:none"><table><thead><tr><th class="n">UAT</th><th class="n">Economie/an</th><th class="n">Cea mai slabă zonă</th><th></th></tr></thead><tbody>
+    ${opts.map((s,i)=>{ const zs=s.zones.map(z=>({seat:matchUAT(z.seat).key,members:new Set(z.members.map(n=>matchUAT(n).key))})); const T=scenarioTotals(zs);
+      return `<tr><td class="n">${s.K}</td><td class="n">${fmtLei(T.econ)}</td><td class="n">${pct(T.minCov)}</td><td><button class="btn" data-sc="${i}">Aplică</button></td></tr>`; }).join("")||`<tr><td colspan="4">Nicio variantă pentru această combinație.</td></tr>`}
+    </tbody></table></div>
+    <p class="note">Mai puține UAT înseamnă economii mai mari, dar zone mai întinse. Rezultatul aplicat se poate ajusta în fila Construiește zone.</p></div>
+    <div class="section"><h2>Rezultat aplicat: ${S.groups.length} UAT</h2>${totalsHtml(S.groups)}<div class="groups">${S.groups.slice().sort((a,b)=>gStats(b).pop-gStats(a).pop).map(g=>groupCard(g,true)).join("")}</div></div>
     ${exportRow()}`;
-    panel.querySelector("#thr").onchange=e=>{S.threshold=+e.target.value; save();};
-    panel.querySelector("#cov").onchange=e=>{S.coverTarget=e.target.checked;};
+    panel.querySelector("#ad").onchange=e=>{S.autoD=+e.target.value; save(); render();};
+    panel.querySelector("#abs").onchange=e=>{S.autoBS=e.target.checked; save(); render();};
+    panel.querySelectorAll("[data-sc]").forEach(b=>b.onclick=()=>applyScenario(opts[+b.dataset.sc]));
     panel.querySelectorAll(".group").forEach(el=>el.onclick=()=>{S.openGroup=S.openGroup===el.dataset.g?null:el.dataset.g; render();});
-    panel.querySelector("#run").onclick=()=>{ const m=autoScenario(); panel.querySelector("#msg").textContent=m; };
     bindExport();
   }
   else if(S.mode==="data"){
@@ -728,7 +804,9 @@ function render(){
     <p class="note"><b>Date financiare:</b> Ministerul Finanțelor, rapoarte de execuție bugetară COFOG3 agregate la nivel de ordonator principal, bugetul local, la 31.12.2025, câte unul pentru fiecare din cele ${nFin} UAT. Sume în lei.</p>
     <p class="note"><b>Venituri proprii</b> (art. 5 din Legea 273/2006): impozite și taxe locale, venituri din proprietate, prestări de servicii, amenzi și alte venituri, plus cotele defalcate din impozitul pe venit (04.01). Nu includ sumele defalcate din TVA, sumele de echilibrare, subvențiile și fondurile europene.</p>
     <p class="note"><b>Aparatul primăriei</b> = cheltuieli de personal ale autorităților executive (cap. 51.01, titlul 10). <b>Funcționare</b> = secțiunea de funcționare a bugetului. <b>Cheltuieli descentralizate</b> = sume defalcate din TVA (11.02) pentru învățământ, asistență socială și protecția copilului.</p>
-    <p class="note"><b>Economia la comasare:</b> procentul ales (implicit 40%) din cheltuielile cu aparatul primăriilor care se unifică; aparatul celei mai mari primării din zonă rămâne integral. <b>Populație:</b> INS, Recensământul Populației și Locuințelor 2021. <b>Contururi:</b> © OpenStreetMap contributors. <b>Suprafețe:</b> calculate din contururi.</p>
+    <p class="note"><b>Economia la comasare</b>, pentru fiecare primărie absorbită (reședința rămâne integral): (1) dispar primarul, viceprimarul, secretarul general și ${IPOTEZE_DEF.posturi} posturi de suport dublate (contabil-șef, achiziții, juridic), la salariile brute lunare din ipoteze plus CAM 2,25%, plafonat la ${IPOTEZE_DEF.plafon}% din aparatul acelei primării, pentru că ghișeele rămân ca birou local; (2) scade numărul total de consilieri locali, recalculat după populația noii UAT (art. 112 din Codul administrativ); (3) dispar costurile de funcționare ale unei primării separate (licențe software, audit, servicii juridice, autoturism, IT, bancă), estimate la ${fmt(IPOTEZE_DEF.functionare)} lei/an; (4) se scade costul armonizării salariale a personalului preluat (${IPOTEZE_DEF.armonizare}%). Toate ipotezele se pot modifica în fila Construiește zone. Funcționarea nu este detaliată pe capitolul 51.01 în datele importate, de aceea punctul (3) rămâne o estimare.</p>
+    <p class="note"><b>Propunerea automată</b>: model de programare liniară în numere întregi (rezolvat cu HiGHS), cu restricții de continuitate teritorială (flux pe graful vecinătăților), distanță maximă până la reședință și acoperire minimă din venituri proprii; reședințele posibile sunt municipiul, orașele și comunele de peste 3.500 de locuitori. <b>Vecinătăți</b>: UAT cu graniță comună de cel puțin 200 m. <b>Distanțe</b>: în linie dreaptă, între punctele interioare ale contururilor.</p>
+    <p class="note"> <b>Populație:</b> INS, Recensământul Populației și Locuințelor 2021. <b>Contururi:</b> © OpenStreetMap contributors. <b>Suprafețe:</b> calculate din contururi.</p>
     <p class="note">Ideea unei hărți interactive a comasării UAT pornește de la proiectul <a href="https://cosettechichirau.github.io/reformaadm/" target="_blank" rel="noopener">Reformă Administrativă</a> realizat de Cosette Chichirău. Datele și calculele din această aplicație sunt refăcute integral din sursele oficiale de mai sus.</p>
     <h2>Date proprii (opțional)</h2>
     <p class="note">Poți înlocui datele financiare cu un CSV propriu, cu coloanele <code>uat; venituri_proprii; personal_administrativ; personal_total; cheltuieli_functionare</code>. Modificarea rămâne doar în browserul tău.</p>
@@ -781,17 +859,39 @@ function indicatorsHtml(st,merged){
     ${row("Acoperire funcționare (totală)",isNaN(st.cover)?"–":"<b>"+(st.cover*100).toFixed(0)+"%</b>")}
     ${row("Acoperire fără cheltuieli descentralizate",isNaN(st.coverNet)?"–":"<b>"+(st.coverNet*100).toFixed(0)+"%</b>")}
   </tbody></table></div>
-  <p class="note">Sume în lei, execuție bugetară 2025. Funcționare finanțată din transferuri = cheltuieli de funcționare − venituri proprii (bani deja primiți de la stat și județ). Cheltuielile descentralizate (învățământ, asistență socială, protecția copilului) sunt finanțate de stat prin sume defalcate din TVA, cod 11.02. Sursa: Ministerul Finanțelor, rapoarte COFOG3 la 31.12.2025, calcul propriu.${merged&&st.econ?` Include economia estimată de ${fmtLei(st.econ)} lei la personalul administrativ după comasare.`:""}</p>`;
+  <p class="note">Sume în lei, execuție bugetară 2025. Funcționare finanțată din transferuri = cheltuieli de funcționare − venituri proprii (bani deja primiți de la stat și județ). Cheltuielile descentralizate (învățământ, asistență socială, protecția copilului) sunt finanțate de stat prin sume defalcate din TVA, cod 11.02. Sursa: Ministerul Finanțelor, rapoarte COFOG3 la 31.12.2025, calcul propriu.${merged&&st.econ?` Include economia estimată după comasare: ${fmtLei(st.eP)} lei conducere și posturi dublate, ${fmtLei(st.eC)} lei consilieri (de la ${st.consB} la ${st.consA}), ${fmtLei(st.eF)} lei funcționare, minus ${fmtLei(st.eA)} lei armonizare salarială; total ${fmtLei(st.econ)} lei/an.`:""}</p>`;
 }
 function groupCard(g,readonly){
-  const st=groupStats(g.members);
+  const st=gStats(g);
   const names=[...g.members].map(k=>byKey.get(k)).sort((a,b)=>b.pop-a.pop).map(u=>u.name);
-  const fin = st.hasFin ? `<br>Venituri ${fmtLei(st.v)} · funcționare ${fmtLei(st.f)} lei · <span class="chip ${CAT[st.cat].cls}">acoperire ${(st.cover*100).toFixed(0)}%</span>${isNaN(st.coverNet)?"":` · fără descentralizate <b>${(st.coverNet*100).toFixed(0)}%</b>`}` : "";
+  const fin = st.hasFin ? `<br>Venituri ${fmtLei(st.v)} · funcționare ${fmtLei(st.f)} lei${isNaN(st.coverNet)?"":` · acoperire proprie <b>${(st.coverNet*100).toFixed(0)}%</b>${st.n>1?` (azi ${(st.coverNetNow*100).toFixed(0)}%)`:""}`}${st.n>1?`<br>Economie estimată <b>${fmtLei(st.econ)} lei/an</b> · reședința ${esc(byKey.get(st.seat).name)} · max. ${Math.ceil(st.dmax)} km`:""}` : "";
   const title = readonly ? `<span class="name">${esc(g.name)}</span>` : `<input class="rename" data-g="${g.id}" aria-label="Numele grupării" value="${esc(g.name)}" style="font:700 14px var(--f-body);border:0;background:none;color:inherit;padding:0;min-width:0;width:100%">`;
   return `<div class="group ${S.activeGroup===g.id?"active":""}" data-g="${g.id}" role="button" tabindex="0">
-    <span class="sw" style="background:${g.color}"></span>${title}<span class="pop ${st.pop<S.threshold?"below":""}">${fmt(st.pop)}</span>
-    <div class="meta">${st.n} UAT: ${esc(names.join(", "))}${fin}</div>
+    <span class="sw" style="background:${g.color}"></span>${title}<span class="pop">${fmt(st.pop)}</span>
+    <div class="meta">${st.contig?"":`<b class="below">Zona nu e continuă: are comune fără graniță comună cu restul. </b>`}${st.n} UAT: ${esc(names.join(", "))}${fin}</div>
     ${S.activeGroup===g.id||S.openGroup===g.id?`<div class="meta" style="cursor:default" onclick="event.stopPropagation()">${indicatorsHtml(st,st.n>1)}</div>`:""}</div>`;
+}
+function totalsHtml(groups){
+  if(!UAT.every(u=>u.fin)) return "";
+  const T=scenarioTotals(groups); const bad=groups.filter(g=>!gStats(g).contig).length;
+  return `<div class="kpis"><div class="kpi"><b>${fmtLei(T.econ)}</b><span>lei/an economie estimată</span></div>
+    <div class="kpi"><b>${pct(T.minCov)}</b><span>acoperire proprie în cea mai slabă zonă</span></div>
+    <div class="kpi"><b class="${bad?"below":""}">${bad?bad+" zone":"Toate"}</b><span>${bad?"necontinue teritorial":"zonele sunt continue"}</span></div></div>`;
+}
+function ipotezeHtml(){
+  const I=S.ip; const f=(k,label,step,suf)=>`<label class="f">${label}<input type="number" data-ip="${k}" value="${I[k]}" step="${step}" min="0">${suf?`<span>${suf}</span>`:""}</label>`;
+  return `<details class="ip"><summary>Ipoteze de calcul pentru economii</summary>
+    <div class="ipgrid">
+    ${f("primar","Primar (lei brut/lună)",100)}${f("viceprimar","Viceprimar (lei brut/lună)",100)}${f("secretar","Secretar general (lei brut/lună)",100)}
+    ${f("posturi","Posturi de suport dublate desființate",1)}${f("salariu","Salariu mediu pe acele posturi",100)}${f("plafon","Plafon: % maxim din aparatul primăriei absorbite",5)}
+    ${f("consilier","Indemnizație consilier local (lei/lună)",50)}${f("functionare","Funcționare primărie separată (lei/an)",10000)}${f("armonizare","Armonizare salarială (% din personalul preluat)",1)}
+    ${f("colectare","Creștere colectare taxe locale (%)",1)}
+    </div><div class="row"><button class="btn" id="ipReset">Revino la valorile implicite</button></div>
+    <p class="note">Salariile includ CAM 2,25%. Creșterea colectării se aplică impozitelor și taxelor locale (venituri proprii fără cotele din impozitul pe venit) și e 0% implicit.</p></details>`;
+}
+function bindIpoteze(){
+  panel.querySelectorAll("[data-ip]").forEach(inp=>inp.onchange=e=>{ const v=parseFloat(e.target.value); if(!isNaN(v)&&v>=0){ S.ip[inp.dataset.ip]=v; save(); restyle(); render(); const d=panel.querySelector("details.ip"); if(d) d.open=true; } });
+  const r=panel.querySelector("#ipReset"); if(r) r.onclick=()=>{ S.ip={...IPOTEZE_DEF}; save(); restyle(); render(); };
 }
 function exportRow(){ return `<div class="row"><button class="btn" id="dl" data-label="Descarcă CSV">Descarcă CSV</button><button class="btn" id="cp" data-label="Copiază tabelul">Copiază tabelul</button></div>`; }
 function bindExport(){
@@ -805,8 +905,9 @@ document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{ S.mode=b.data
 /* ============================================================
    10. PORNIRE
    ============================================================ */
-if(!load() || !S.groups.length) applyPreset(PRESET_5);
+S.ip={...IPOTEZE_DEF};
 for(const [n,f] of Object.entries(FIN_2025)){ const u=matchUAT(n); if(u) u.fin={...f}; }
+if(!load() || !S.groups.length) applyPreset();
 render();
 try{ initMap(); loadGeometry(); }catch(e){ setGeoStatus("Harta nu s-a putut încărca. Verifică conexiunea la internet și reîncarcă pagina.",false); }
 
